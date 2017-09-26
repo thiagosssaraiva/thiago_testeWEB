@@ -11,22 +11,23 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Criar Passageiro</title>
         <link rel="stylesheet" href="css/formulario.css"/>
+        <script src="js/validate.js"></script>
     </head>
     <body>
         <c:url value="CreatePassenger" var="urlFormulario" />
         <div class="form-contato">
-            <form action="${urlFormulario}" method="post" enctype="application/x-www-form-urlencoded">
+            <form action="${urlFormulario}" method="post" enctype="application/x-www-form-urlencoded" onSubmit="return validatePassenger();">
                 <div class="form-group">
                     <label>Nome </label>
-                    <input type="text" class="form-control" name="nome"/>
+                    <input type="text" class="form-control" name="nome" id="nome"/>
                 </div>
                 <div class="form-group">
                     <label>Data de nascimento </label>
-                    <input type="date" class="form-control" name="dt_nasc"/>
+                    <input type="date" class="form-control" name="dt_nasc" id="dt_nasc"/>
                 </div>
                 <div class="form-group">
                     <label>CPF</label>
-                    <input type="text"  class="form-control" class="form-control"name="cpf"/>
+                    <input type="text"  class="form-control" class="form-control"name="cpf" id="cpf"/>
                 </div>
                 <div class="form-group">
                     <label>Status </label>
