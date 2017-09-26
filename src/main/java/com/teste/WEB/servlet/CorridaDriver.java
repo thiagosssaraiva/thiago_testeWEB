@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "CreateDriver", urlPatterns = {"/CreateDriver"})
-public class CreateDriver extends HttpServlet {
+@WebServlet(name = "CorridaDriver", urlPatterns = {"/CorridaDriver"})
+public class CorridaDriver extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -85,7 +85,7 @@ public class CreateDriver extends HttpServlet {
         
             // Encaminhamento para o processamento continuar no jsp.
             RequestDispatcher dispatcher =
-                    request.getRequestDispatcher("listaDriver.jsp");
+                    request.getRequestDispatcher("listaCorridas.jsp");
             dispatcher.forward(request,response);
 
     }

@@ -19,23 +19,15 @@
         <form action="${urlFormulario}" method="post" enctype="application/x-www-form-urlencoded">          
             <div class="form-group">
                 <label>Motorista </label>
-                <select class="form-control" class="form-control"  name="driver">
-                    <c:forEach items="${driver}" var="c">
-                        <option value=<c:out value="${c.id}" />><c:out value="${c.nome}" /></option>
-                    </c:forEach> 
-                </select>
+                <input type="text"  class="form-control" class="form-control" name="motorista" id="motorista"/>
             </div>
             <div class="form-group">
                 <label>Passageiro </label>
-                <select class="form-control" class="form-control"  name="passenger">
-                    <c:forEach items="${passenger}" var="c">
-                        <option value=<c:out value="${c.id}" />><c:out value="${c.nome}" /></option>
-                    </c:forEach> 
-                </select>
+                <input type="text"  class="form-control" class="form-control" name="passageiro" id="passageiro"/>
             </div>
             <div class="form-group">
                 <label>Valor da Corrida</label>
-                <input type="text"  class="form-control" class="form-control"name="modelCar" id="valor"/>
+                <input type="text"  class="form-control" class="form-control" name="valor" id="valor"/>
             </div>
             <button type="submit"  class="btn btn-primary">Agendar Corrida</button>
         </form>
