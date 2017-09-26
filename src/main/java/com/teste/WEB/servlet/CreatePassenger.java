@@ -5,7 +5,6 @@
  */
 package com.teste.WEB.servlet;
 
-import com.teste.WEB.dao.DriverDao;
 import com.teste.WEB.dao.PassengerDAO;
 import com.teste.WEB.entities.Driver;
 import com.teste.WEB.entities.Passenger;
