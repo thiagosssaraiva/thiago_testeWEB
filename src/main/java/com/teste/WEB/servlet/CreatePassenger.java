@@ -5,8 +5,10 @@
  */
 package com.teste.WEB.servlet;
 
-import com.teste.WEB.dao.ContatoDao;
+import com.teste.WEB.dao.DriverDao;
+import com.teste.WEB.dao.PassengerDAO;
 import com.teste.WEB.entities.Driver;
+import com.teste.WEB.entities.Passenger;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -16,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +27,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Thiago
  */
+@WebServlet(name = "CreatePassenger", urlPatterns = {"/CreatePassenger"})
 public class CreatePassenger extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -54,19 +58,23 @@ public class CreatePassenger extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-       
-        Driver driver = new Driver();
+        Passenger passenger = new Passenger();
         
-        driver.setNome(request.getParameter("nome"));
-        driver.setData_nascimento(request.getParameter("dt_nasc"));
-        driver.setCPF(request.getParameter("telefone"));
-        driver.setCPF(request.getParameter("cpf"));
-        driver.setSexo(request.getParameter("sexo"));
-        driver.setStatus(true);
+        passenger.setNome(request.getParameter("nome"));
+        passenger.setData_nascimento(request.getParameter("dt_nasc"));
+        passenger.setCPF(request.getParameter("telefone"));
+        passenger.setSexo(request.getParameter("sexo"));
+        String status = request.getParameter("isActive");
+        if(status == "0"){
+            passenger.setStatus(false);
+        }else{
+            passenger.setStatus(true);
+        }
+
         
-        ContatoDao dao = new ContatoDao();
+        PassengerDAO dao = new PassengerDAO();
         try {
-            dao.Add(driver);
+            dao.Add(passenger);
         } catch (SQLException ex) {
             Logger.getLogger(com.teste.WEB.servlet.CreateDriver.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -86,7 +94,7 @@ public class CreatePassenger extends HttpServlet {
         
             // Encaminhamento para o processamento continuar no jsp.
             RequestDispatcher dispatcher =
-                    request.getRequestDispatcher("lista.jsp");
+                    request.getRequestDispatcher("listaPassenger.jsp");
             dispatcher.forward(request,response);
 
     }

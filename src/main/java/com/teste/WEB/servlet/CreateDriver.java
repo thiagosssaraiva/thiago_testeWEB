@@ -1,7 +1,7 @@
 
 package com.teste.WEB.servlet;
 
-import com.teste.WEB.dao.ContatoDao;
+import com.teste.WEB.dao.DriverDao;
 import com.teste.WEB.entities.Driver;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -49,18 +49,21 @@ public class CreateDriver extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-       
         Driver driver = new Driver();
         
         driver.setNome(request.getParameter("nome"));
         driver.setData_nascimento(request.getParameter("dt_nasc"));
-        driver.setCPF(request.getParameter("telefone"));
-        driver.setModelCar(request.getParameter("modelCar"));
         driver.setCPF(request.getParameter("cpf"));
+        driver.setModelCar(request.getParameter("modelCar"));
         driver.setSexo(request.getParameter("sexo"));
-        driver.setStatus(true);
+        String status = request.getParameter("isActive");
+        if(status == "0"){
+            driver.setStatus(false);
+        }else{
+            driver.setStatus(true);
+        }
         
-        ContatoDao dao = new ContatoDao();
+        DriverDao dao = new DriverDao();
         try {
             dao.Add(driver);
         } catch (SQLException ex) {

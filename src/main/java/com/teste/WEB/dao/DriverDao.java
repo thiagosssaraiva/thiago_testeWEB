@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Thiago
  */
-public class ContatoDao {
+public class DriverDao {
 
     public void Add(Driver contato) throws ClassNotFoundException, Exception {
         Connection conn = null;
@@ -47,7 +47,7 @@ public class ContatoDao {
         PreparedStatement stmt = null;
         Connection conn = null;
         
-        String sql = "SELECT NM_CONTATO, DT_NASCIMENTO, VL_TELEFONE, VL_EMAIL, DT_CADASTRO FROM TB_CONTATO";
+        String sql = "SELECT nm_name, cpf, model_Car, dt_nas FROM driver";
         
         List<Driver> lista = new ArrayList<Driver>();
         try {
@@ -59,8 +59,10 @@ public class ContatoDao {
 
             while (resultSet.next()) {
                 Driver contato = new Driver();
-                contato.setNome(resultSet.getString("NM_CONTATO"));
-                contato.setData_nascimento(resultSet.getString("DT_NASCIMENTO"));
+                contato.setNome(resultSet.getString("nm_name"));
+                contato.setCPF(resultSet.getString("cpf"));
+                contato.setModelCar(resultSet.getString("model_Car"));
+                contato.setData_nascimento(resultSet.getString("dt_nas"));
 
                 lista.add(contato);
             }
