@@ -18,15 +18,17 @@ public class DriverDao {
     public void Add(Driver contato) throws ClassNotFoundException, Exception {
         Connection conn = null;
         PreparedStatement stmt = null;
+        
+        
 
-        String sql = "INSERT INTO driver (nm_name, cpf, "
-                + "model_Car, dt_nas, status_driver, sexo) "
-                + "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = " INSERT INTO driver (nm_name, cpf, ";
+               sql+= " model_Car, dt_nas, status_driver, sexo) ";
+               sql+= " VALUES (?, ?, ?, ?, ?, ?)";
+               
+               System.out.println(sql);
 
         try {
             conn = contextDB.createConnection();
-            stmt = conn.prepareStatement(sql);
-
             stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, contato.getNome());
@@ -34,7 +36,7 @@ public class DriverDao {
             stmt.setString(3, contato.getModelCar());
             stmt.setString(4, contato.getData_nascimento());
             stmt.setBoolean(5, contato.isStatus());
-            stmt.setString(6, contato.getSexo());
+            stmt.setString(6, contato.getSexo());      
 
             stmt.execute();
 

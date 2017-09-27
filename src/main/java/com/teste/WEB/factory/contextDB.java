@@ -14,7 +14,7 @@ import java.sql.DriverManager;
  */
 public class contextDB {  
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "1623922t";
     private static final String DATABASE = "jdbc:mysql://localhost:3306/thiago_testeWEB";
     
     public static Connection createConnection() throws Exception{

@@ -19,11 +19,15 @@
         <form action="${urlFormulario}" method="post" enctype="application/x-www-form-urlencoded">          
             <div class="form-group">
                 <label>Motorista </label>
-                <input type="text"  class="form-control" class="form-control" name="motorista" id="motorista"/>
+                <select class="form-control" class="form-control"  name="isActive">
+                    <option value=<c:out value="${c.id_driver}" />><c:out value="${c.nm_name}" /></option>
+                </select>
             </div>
             <div class="form-group">
                 <label>Passageiro </label>
-                <input type="text"  class="form-control" class="form-control" name="passageiro" id="passageiro"/>
+                <select class="form-control" class="form-control"  name="isActive">
+                    <option value=<c:out value="${c.id_passenger}" />><c:out value="${c.nm_name}" /></option>
+                </select>
             </div>
             <div class="form-group">
                 <label>Valor da Corrida</label>
